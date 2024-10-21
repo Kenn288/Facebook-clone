@@ -1,0 +1,21 @@
+<!-- profile.html -->
+{% extends 'base.html' %}
+
+{% block title %}{{ user.username }}'s Profile{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>{{ user.username }}'s Profile</h2>
+    <img src="{{ user.userprofile.profile_pic.url }}" alt="Profile Picture" width="150">
+    <p>{{ user.userprofile.bio }}</p>
+
+    <h3>Posts</h3>
+    <ul>
+        {% for post in posts %}
+            <li>{{ post.content }} - {{ post.created_at }}</li>
+        {% empty %}
+            <li>No posts yet.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
